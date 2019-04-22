@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\jessy\\Desktop\\Servicio\\Proyecto\\Correspondencia\\Correspondencia.csproj": {}
+    "C:\\Users\\ISC_G\\Source\\Repos\\SSCorrespondencia\\Correspondencia\\Correspondencia.csproj": {}
   },
   "projects": {
-    "C:\\Users\\jessy\\Desktop\\Servicio\\Proyecto\\Correspondencia\\Correspondencia.csproj": {
+    "C:\\Users\\ISC_G\\Source\\Repos\\SSCorrespondencia\\Correspondencia\\Correspondencia.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jessy\\Desktop\\Servicio\\Proyecto\\Correspondencia\\Correspondencia.csproj",
+        "projectUniqueName": "C:\\Users\\ISC_G\\Source\\Repos\\SSCorrespondencia\\Correspondencia\\Correspondencia.csproj",
         "projectName": "Correspondencia",
-        "projectPath": "C:\\Users\\jessy\\Desktop\\Servicio\\Proyecto\\Correspondencia\\Correspondencia.csproj",
-        "packagesPath": "C:\\Users\\jessy\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jessy\\Desktop\\Servicio\\Proyecto\\Correspondencia\\obj\\",
+        "projectPath": "C:\\Users\\ISC_G\\Source\\Repos\\SSCorrespondencia\\Correspondencia\\Correspondencia.csproj",
+        "packagesPath": "C:\\Users\\ISC_G\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ISC_G\\Source\\Repos\\SSCorrespondencia\\Correspondencia\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\jessy\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ISC_G\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -57,6 +57,10 @@
               "target": "Package",
               "version": "[2.2.0, )",
               "autoReferenced": true
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[2.2.3, )"
             }
           },
           "imports": [
