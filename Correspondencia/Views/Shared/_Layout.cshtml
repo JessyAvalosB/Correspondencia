@@ -18,16 +18,11 @@
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
-
-
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="#"><img style="max-width: 200px" src="~/img/colimaestado.png" /></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+            <a class="navbar-brand" aria-disabled="true"><img style="max-width: 200px" src="~/img/colimaestado.png" /></a>
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                <ul class="navbar-nav">
+                <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
                         <a class="nav-link" asp-controller="Home" asp-action="Home">Inicio <span class="sr-only">(current)</span></a>
                     </li>
@@ -38,18 +33,17 @@
                         <a class="nav-link" asp-controller="Home" asp-action="AddDoc">Agregar Doc</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Remitentes
+                        <a class="nav-link dropdown-toggle flex-grow-1" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Firmantes
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <a class="dropdown-item" href="#">Nuevo</a>
                             <a class="dropdown-item" href="#">Editar</a>
                         </div>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-controller="Home" asp-action="Index">Cerrar Sesion</a>
-                    </li>
+
                 </ul>
+                <a class="btn btn-outline-dark text-white" asp-controller="Home" asp-action="Index" role="button">Cerrar Sesion</a>
             </div>
         </nav>
     </header>
