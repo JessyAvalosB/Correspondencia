@@ -28,3 +28,6 @@ C:\Users\jessy\Desktop\Servicio\Proyecto\Correspondencia\obj\Debug\netcoreapp2.2
 C:\Users\jessy\Desktop\Servicio\Proyecto\Correspondencia\obj\Debug\netcoreapp2.2\Correspondencia.dll
 C:\Users\jessy\Desktop\Servicio\Proyecto\Correspondencia\obj\Debug\netcoreapp2.2\Correspondencia.pdb
 C:\Users\jessy\Desktop\Servicio\Proyecto\Correspondencia\obj\Debug\netcoreapp2.2\Correspondencia.csproj.CopyComplete
+C:\Users\jessy\Desktop\Servicio\Proyecto\Correspondencia\obj\Debug\netcoreapp2.2\Razor\Views\Home\Home.g.cshtml.cs
+C:\Users\jessy\Desktop\Servicio\Proyecto\Correspondencia\obj\Debug\netcoreapp2.2\Razor\Views\Home\Search.g.cshtml.cs
+C:\Users\jessy\Desktop\Servicio\Proyecto\Correspondencia\obj\Debug\netcoreapp2.2\Razor\Views\Home\AddDoc.g.cshtml.cs

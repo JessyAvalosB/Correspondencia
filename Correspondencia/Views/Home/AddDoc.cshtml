@@ -1,0 +1,57 @@
+﻿@{
+    ViewData["Title"] = "Agregar Documento";
+}
+
+<br />
+<br />
+
+<div class="container ">
+
+    <div class="card col-md-7 mx-auto">
+
+        <div class="card-header text-center border">
+            <h1 class="">Documento</h1>
+        </div>
+        <div class="card-body justify-content-around">
+            <div class="row ">
+                <div class="col-md-7 flex-column">
+                    <p>No. Oficio</p>
+                    <input class="form-control" id="Text1" type="text" />
+                    <br />
+                    <p>Documento</p>        
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                        <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                    </div>
+                    <br />
+                    <br />
+                    <p>Tipo de documento</p>
+                    <select class="form-control" id="FileType">
+                        <option selected></option>
+                        <option>Si</option>
+                        <option>No</option>
+                    </select>
+                    <br />
+                    <p>Destinatario</p>
+                    <select class="form-control" id="Addressee">
+                        <option></option>
+
+                    </select>
+                    <br />
+                    <p>Firmante</p>
+                    <select class="form-control" id="Signatory">
+                        <option></option>
+
+                    </select>
+                </div>
+                <div class="col-md-5 flex-column">
+                    <p>Resumen</p>
+                    <textarea class="form-control" id="TextArea1" rows="15" cols="20"></textarea>
+                    <input id="SubmitAddDoc" type="submit" value="Save" />
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+</div>
