@@ -1,0 +1,13 @@
+USE CORRESPONDENCIA
+GO
+CREATE VIEW VistaRespuesta AS
+	Select CR.NOMBRE+' '+CR.APELLIDO_PATERNO AS "Nombre remitente",CR.CORREO AS "Correo remitente", CR.TELEFONO AS "Telefono remitente",
+			CR.CARGO AS "Cargo",CO.NOMBRE AS "Direccion origen",CT.TIPO As "Tipo Documento", D.RESUMEN AS "Resumen", D.RESPUESTA AS "Respuesta"
+			FROM ((((TBL_DOCUMENTOS AS D 
+				JOIN CAT_REMITENTES AS  CR
+					ON CR.ID_REMITENTE=D.ID_REMITENTE)
+				JOIN CAT_ORIGENES AS CO
+					ON CO.ID_ORIGEN = CR.ID_ORIGEN)
+				JOIN CAT_TIPO AS CT 
+					ON CT.ID_TIPO=D.ID_TIPO_DOC)
+					);
