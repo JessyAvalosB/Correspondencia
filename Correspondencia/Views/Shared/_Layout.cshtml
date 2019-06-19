@@ -27,26 +27,27 @@
                         <a class="nav-link" asp-controller="Home" asp-action="Home">Inicio <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" asp-controller="Home" asp-action="Search">Buscar</a>
+                        <a class="nav-link" asp-controller="Documents" asp-action="Search">Buscar</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" asp-controller="Home" asp-action="AddDoc">Agregar Doc</a>
+                        <a class="nav-link" asp-controller="Documents" asp-action="AddDoc">Agregar Doc</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle flex-grow-1" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Firmantes
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="#">Nuevo</a>
-                            <a class="dropdown-item" href="#">Editar</a>
+                            <a class="dropdown-item" asp-controller="Signatory" asp-action="AddRemitente">Nuevo</a>
+                            <a class="dropdown-item" asp-controller="Signatory" asp-action="EditRemitente">Editar</a>
                         </div>
                     </li>
 
                 </ul>
                 <a class="btn btn-outline-dark text-white" asp-controller="Home" asp-action="Index" role="button">Cerrar Sesion</a>
             </div>
-        </nav>
+            </nav>
     </header>
+
 
     <div class="container">
         <partial name="_CookieConsentPartial" />
@@ -54,8 +55,6 @@
             @RenderBody()
         </main>
     </div>
-
- 
 
 
     <footer class="border-top footer text-muted">

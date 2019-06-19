@@ -1,0 +1,73 @@
+﻿
+@{
+    ViewData["Title"] = "EditRemitente";
+}
+
+<br />
+<br />
+<br />
+<h1 class="text-primary text-center text-black-50">Editar Remitente</h1>
+<br />
+<br />
+
+<div class="container text-center">
+
+    <br /> 
+
+    <div class="row">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-4">
+            <h4>Busqueda Por Nombre</h4>
+            <div class="input-group">
+                <span class="input-group-btn">
+                    <button class="btn btn-primary" type="button">Buscar</button>
+                </span>
+                <input type="text" class="form-control">
+            </div>
+        </div>
+        <div class="form-group col-md-4">
+            <h4 for="inputState">Dependencia</h4>
+            <select id="inputDependencia" class="form-control">
+                <option selected>Choose...</option>
+                <option>...</option>
+            </select>
+        </div>
+        <div class="col-lg-2"></div>
+    </div>
+
+        <br />
+
+
+        <div data-spy="scroll">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Dependencia</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Apellido Paterno</th>
+                        <th scope="col">Apellido Materno</th>
+                        <th scope="col">Puesto</th>
+                        <th scope="col">Correo</th>
+                        <th scope="col">Telefono</th>
+                        <th scope="col">Guardar</th>
+
+                    </tr>
+                </thead>
+                <form action="/" method="post">
+                    <tbody>
+                        <tr>
+                            <td type="text" name="Dependencia">Conagua</td>
+                            <td input type="text" name="Nombre">Alfredo</td>
+                            <td input type="text" name="ApellidoP">Beltran</td>
+                            <td input type="text" name="ApellidoM">Conejo</td>
+                            <td input type="text" name="Puesto">Jefe de Informatica</td>
+                            <td input type="text" name="Correo">beltran@gmail.com</td>
+                            <td input type="text" name="Telefono">3131128425</td>
+                            <td type="button" class="btn bg-light btn-light">Editar</td>
+                        </tr>
+                    </tbody>
+                </form>
+
+            </table>
+        </div>
+    </div>

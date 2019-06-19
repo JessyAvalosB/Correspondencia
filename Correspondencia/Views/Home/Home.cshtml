@@ -14,11 +14,12 @@
         <br />
         <br />
         <div data-spy="scroll">
-            <table class="table">
+            <table class="table table-responsive">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Enviado</th>
+                        <th scope="col">Destino</th>
                         <th scope="col">Dirección destino</th>
                         <th scope="col">Remitente</th>
                         <th scope="col">Dirección remitente</th>
@@ -31,20 +32,26 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach (var document in ViewBag.Documents)
+                    {
                     <tr>
                         <th scope="row">1</th>
-                        <td>Si</td>
-                        <td>Direccion1</td>
-                        <td>Remitente1</td>
-                        <td>Direccion2</td>
-                        <td>Puesto1</td>
-                        <td>Invitacion</td>
-                        <td>Pendiente</td>
-                        <td>Si</td>
-                        <td>14/03/2018</td>
+                        <td>@document.ENVIADO</td>
+                        <td>@document.NOMBREDESTINO</td>
+                        <td>@document.DIRECCIONDESTINO</td>
+                        <td>@document.NOMBREREMITENTE</td>
+                        <td>@document.DIRECCIONORIGEN</td>
+                        <td>@document.CARGO</td>
+                        <td>@document.TIPODOCUMENTO</td>
+                        <td>@document.RECIBIDO</td>
+                        <td>@document.EXISTEFISICAMENTE</td>
+                        <td>@document.FECHACAPTURA</td>
                         <td>Ver</td>
                     </tr>
+                    }
+                    
                 </tbody>
             </table>
+            
         </div>
     </div>
