@@ -1,0 +1,58 @@
+USE CORRESPONDENCIA
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author, ALEJANDRO GARCIA ALVAREZ>
+-- Create date: <Create Date, 24/02/2019>
+-- Description:	<Description, FUNCION PARA DAR DE ALTA UN NUEVO DOCUMENTO>
+-- =============================================
+CREATE PROCEDURE sp_InsertDocumento
+	-- Add the parameters for the stored procedure here
+	@COPIA BIT,
+	@FOLIO VARCHAR(9),
+	@IMAGEN IMAGE,
+	@RESUMEN VARCHAR (500),
+	@DESTINATARIO INT,
+	@REMITENTE INT,
+	@ID_TIPO_DOCUMENTO INT,
+	@ID_CARGA_USUARO INT,
+	@TURNADO BIT,
+	@ENVIAR BIT
+
+AS
+BEGIN
+		DECLARE @FECHAC SMALLDATETIME
+		DECLARE @FECHAE SMALLDATETIME 
+		SELECT @FECHAC=GETDATE();
+		SELECT @FECHAE=GETDATE();
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+    -- Insert statements for procedure here
+	IF @ENVIAR=0 
+	BEGIN 
+		INSERT INTO TBL_DOCUMENTOS (COPIA_FISICA,Folio,IMAGEN,Resumen,ID_DIRECCION,ID_REMITENTE,ID_TIPO_DOC,
+		ID_CARGA_USUARIO,TURNADO,FECHA_CAPTURA,ESTADO)
+		VALUES(@COPIA,@FOLIO,@IMAGEN,@RESUMEN,@DESTINATARIO,@REMITENTE,@ID_TIPO_DOCUMENTO,@ID_CARGA_USUARO,@TURNADO,@FECHAC,0)
+	END 
+	ELSE 
+	BEGIN
+	INSERT INTO TBL_DOCUMENTOS (COPIA_FISICA,Folio,IMAGEN,Resumen,ID_DESTINATARIO,ID_REMITENTE,ID_TIPO_DOC,
+		ID_CARGA_USUARIO,TURNADO,FECHA_CAPTURA,FECHA_ENVIO,ESTADO)
+		VALUES(@COPIA,@FOLIO,@IMAGEN,@RESUMEN,@DESTINATARIO,@REMITENTE,@ID_TIPO_DOCUMENTO,@ID_CARGA_USUARO,@TURNADO,@FECHAC,@FECHAE,0)
+	END
+END
+GO
+
+--Ejemplo si se envia en el momento 
+EXEC sp_InsertDocumento 1,'123456789',null,'Hola Soy un resumen'    ,2,1,1,5,0,0
+--Ejemplo si se decide no enviar 
+EXEC sp_InsertDocumento 0,'ABCD56789',null,'Hola Soy un resumen 2.0',4,1,2,5,1,1
+
+
+
+Select * From VistaPrincipal
+Select * from VistaDetallada
