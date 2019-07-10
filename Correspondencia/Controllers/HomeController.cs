@@ -24,10 +24,15 @@ namespace Correspondencia.Controllers
 
         public IActionResult Home()
         {
+
             Correspondencia.DB.DB db = new Correspondencia.DB.DB();
+
             List<DocumentModel> documents = new List<DocumentModel>();
+
             documents = db.getDocuments();
+
             ViewBag.Documents = documents;
+
             return View();
         }
 

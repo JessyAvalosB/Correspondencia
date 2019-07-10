@@ -13,44 +13,54 @@
             <h1 class="">Documento</h1>
         </div>
         <div class="card-body justify-content-around">
-            <div class="row ">
-                <div class="col-md-7 flex-column">
-                    <p>No. Oficio</p>
-                    <input class="form-control" id="Text1" type="text" />
-                    <br />
-                    <p>Documento</p>        
-                    <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
-                        <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+            <form action="/Documents/AddDoc" method="post">
+                <div class="row ">
+                    <div class="col-md-7 flex-column">
+                        <p>No. Oficio</p>
+                        <input class="form-control" name="FOLIO" type="text" />
+                        <br />
+                        <p>Documento</p>
+                        <div class="custom-file">
+                            <input type="file" name="FILE" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                            <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                        </div>
+                        <br />
+                        <br />
+                        <p>Tipo de documento</p>
+                        <select class="form-control" id="FileType" name="TYPE">
+                            <option selected></option>
+                            @foreach (var doctype in ViewBag.DocTypes)
+                            {
+                                <option value="@doctype.ID_TIPO">@doctype.TIPO</option>
+                            }
+                        </select>
+                        <br />
+                        <p>Destinatario</p>
+                        <select class="form-control" id="Address" name="DESTINATARIO">
+                            <option selected></option>
+                            @foreach (var docDestination in ViewBag.DocDestination)
+                            {
+                                <option value="@docDestination.ID_DIRECCION">@docDestination.NOMBRE</option>
+                            }
+                        </select>
+                        <br />
+                        <p>Firmante</p>
+                        <select class="form-control" id="Signatory" name="REMITENTE">
+                            <option selected></option>
+                            @foreach (var docSignatory in ViewBag.DocSignatories)
+                            {
+                                <option value="@docSignatory.ID_REMITENTE">@docSignatory.NOMBRE</option>
+                            }
+
+                        </select>
                     </div>
-                    <br />
-                    <br />
-                    <p>Tipo de documento</p>
-                    <select class="form-control" id="FileType">
-                        <option selected></option>
-                        <option>Si</option>
-                        <option>No</option>
-                    </select>
-                    <br />
-                    <p>Destinatario</p>
-                    <select class="form-control" id="Addressee">
-                        <option></option>
-
-                    </select>
-                    <br />
-                    <p>Firmante</p>
-                    <select class="form-control" id="Signatory">
-                        <option></option>
-
-                    </select>
+                    <div class="col-md-5 flex-column">
+                        <p>Resumen</p>
+                        <textarea class="form-control" name="RESUMEN" rows="15" cols="20"></textarea>
+                        <input class="btn btn-primary btn-block mt-3" type="submit" name="AddDoc" value="Save" />
+                    </div>
                 </div>
-                <div class="col-md-5 flex-column">
-                    <p>Resumen</p>
-                    <textarea class="form-control" id="TextArea1" rows="15" cols="20"></textarea>
-                    <input id="SubmitAddDoc" type="submit" value="Save" />
-                </div>
-            </div>
-            
+            </form>
         </div>
     </div>
 
