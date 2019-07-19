@@ -8,19 +8,16 @@ namespace Correspondencia.Models.Documents
 {
     public class AddDocModel
     {
-
-        public int COPIA { get; set; }
-        [Required]
+        public int ID_REM { get; set; }
+        public int ID_DIR { get; set; }
+        public int ID_TIP { get; set; }
         public string FOLIO { get; set; }
-        public string FILE_URL { get; set; }
-        [Required]
+        public int TURNADO { get; set; }
+        public int ESTADO { get; set; }
         public string RESUMEN { get; set; }
-        [Required]
-        public int DESTINATARIO { get; set; }
-        [Required]
-        public int REMITENTE { get; set; }
-        [Required]
-        public int ID_TIPO_DOCUMENTO { get; set; }
-       
+        public string PDF { get; set; }
+        public int COPIA { get; set; }
+
+
     }
 }

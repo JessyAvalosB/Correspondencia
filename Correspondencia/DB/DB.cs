@@ -14,7 +14,7 @@ namespace Correspondencia.DB
     public class DB
     {
 
-        SqlConnection connection = new SqlConnection("Server=tcp:seder.database.windows.net,1433;Initial Catalog=SEDER-Mensajeria;Persist Security Info=False;User ID=SEDER-A;Password=Local123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+        SqlConnection connection = new SqlConnection("Server=DESKTOP-HKUPQ77;Initial Catalog=SEDER-Mensajeria;Integrated Security = True");
 
         SqlCommand cmd;
         /*
@@ -53,46 +53,44 @@ namespace Correspondencia.DB
 
             DocumentModel documentModel = new DocumentModel();
             
-            if (Convert.ToInt32(reader["ENVIADO"]) == 0)
+            if (Convert.ToInt32(reader["TURNADO"]) == 0)
             {
-                documentModel.ENVIADO = "No";
+                documentModel.TURNADO = "No";
             }
             else
             {
-                documentModel.ENVIADO = "Si";
+                documentModel.TURNADO = "Si";
             }
 
-            if (Convert.ToInt32(reader["EXISTEFISICAMENTE"]) == 0)
+            if (Convert.ToInt32(reader["COPIA_FISICA"]) == 0)
             {
-                documentModel.EXISTEFISICAMENTE = "No";
+                documentModel.COPIA_FISICA = "No";
             }
             else
             {
-                documentModel.EXISTEFISICAMENTE = "Si";
+                documentModel.COPIA_FISICA = "Si";
             }
 
-            if (Convert.ToInt32(reader["RECIBIDO"]) == 0)
+            if (Convert.ToInt32(reader["ESTADO"]) == 0)
             {
-                documentModel.RECIBIDO = "No";
+                documentModel.ESTADO = "No";
             }
             else
             {
-                documentModel.RECIBIDO = "Si";
+                documentModel.ESTADO = "Si";
             }
             
-            documentModel.FECHACAPTURA = Convert.ToDateTime(reader["FECHACAPTURA"]);
+            documentModel.FECHA_CAPTURA = Convert.ToDateTime(reader["FECHA_CAPTURA"]);
 
-            documentModel.NOMBREDESTINO = Convert.ToString(reader["NOMBREDESTINO"]);
+            documentModel.DESTINO = Convert.ToString(reader["DESTINO"]);
 
-            documentModel.DIRECCIONDESTINO = Convert.ToString(reader["DIRECCIONDESTINO"]);
-
-            documentModel.NOMBREREMITENTE = Convert.ToString(reader["NOMBREREMITENTE"]);
+            documentModel.FIRMANTE = Convert.ToString(reader["FIRMANTE"]);
 
             documentModel.CARGO = Convert.ToString(reader["CARGO"]);
 
-            documentModel.DIRECCIONORIGEN = Convert.ToString(reader["DIRECCIONORIGEN"]);
+            documentModel.ORIGEN = Convert.ToString(reader["ORIGEN"]);
 
-            documentModel.TIPODOCUMENTO = Convert.ToString(reader["TIPODOCUMENTO"]);
+            documentModel.TIPO = Convert.ToString(reader["TIPO"]);
 
             return documentModel;
 
@@ -121,5 +119,29 @@ namespace Correspondencia.DB
 
             return docSignatories;
         }
+        public void insertDocument(AddDocModel addDoc)
+        {
+          
+            using (connection)
+            {
+                connection.Open();
+
+                cmd = new SqlCommand("sp_InsertDocumento", connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@ID_REM", addDoc.ID_REM);
+                cmd.Parameters.AddWithValue("@ID_DIR", addDoc.ID_DIR);
+                cmd.Parameters.AddWithValue("@ID_TIP", addDoc.ID_TIP);
+                cmd.Parameters.AddWithValue("@FOLIO", addDoc.FOLIO);
+                cmd.Parameters.AddWithValue("@TURNADO", addDoc.TURNADO);
+                cmd.Parameters.AddWithValue("@ESTADO", addDoc.ESTADO);
+                cmd.Parameters.AddWithValue("@RESUMEN", addDoc.RESUMEN);
+                cmd.Parameters.AddWithValue("@PDF", addDoc.PDF);
+                cmd.Parameters.AddWithValue("@COPIA", addDoc.COPIA);
+
+                cmd.ExecuteNonQuery();
+
+                }
+                connection.Close();
+            }
+        }
     }
-}

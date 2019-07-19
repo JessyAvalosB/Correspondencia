@@ -7,25 +7,23 @@ namespace Correspondencia.Models
 {
     public class DocumentModel
     {
-        public string ENVIADO { get; set; }
+        public string TURNADO { get; set; }
 
-        public DateTime FECHACAPTURA { get; set; }
+        public DateTime FECHA_CAPTURA { get; set; }
 
-        public string EXISTEFISICAMENTE { get; set; }
+        public string COPIA_FISICA { get; set; }
 
-        public string RECIBIDO { get; set; }
+        public string ESTADO { get; set; }
 
-        public string NOMBREDESTINO { get; set; }
+        public string DESTINO { get; set; }
 
-        public string DIRECCIONDESTINO { get; set; }
-
-        public string NOMBREREMITENTE { get; set; }
+        public string FIRMANTE { get; set; }
 
         public string CARGO { get; set; }
 
-        public string DIRECCIONORIGEN { get; set; }
+        public string ORIGEN { get; set; }
 
-        public string TIPODOCUMENTO { get; set; }
+        public string TIPO { get; set; }
 
     }
 }

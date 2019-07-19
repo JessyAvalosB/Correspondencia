@@ -18,7 +18,6 @@
                 <thead>
                     <tr>
                         <th scope="col">Enviado</th>
-                        <th scope="col">Destino</th>
                         <th scope="col">Dirección destino</th>
                         <th scope="col">Remitente</th>
                         <th scope="col">Dirección remitente</th>
@@ -34,22 +33,19 @@
                     @foreach (var document in ViewBag.Documents)
                     {
                     <tr>
-                        <td>@document.ENVIADO</td>
-                        <td>@document.NOMBREDESTINO</td>
-                        <td>@document.DIRECCIONDESTINO</td>
-                        <td>@document.NOMBREREMITENTE</td>
-                        <td>@document.DIRECCIONORIGEN</td>
+                        <td>@document.TURNADO</td>    
+                        <td>@document.DESTINO</td>
+                        <td>@document.FIRMANTE</td>
+                        <td>@document.ORIGEN</td>
                         <td>@document.CARGO</td>
-                        <td>@document.TIPODOCUMENTO</td>
-                        <td>@document.RECIBIDO</td>
-                        <td>@document.EXISTEFISICAMENTE</td>
-                        <td>@document.FECHACAPTURA</td>
-                        <td>Ver</td>
+                        <td>@document.TIPO</td>                              
+                        <td>@document.ESTADO</td>
+                        <td>@document.COPIA_FISICA</td>                      
+                        <td>@document.FECHA_CAPTURA</td>
+                        <td>Ver</td>                                         
                     </tr>
-                    }
-                    
-                </tbody>
+                    }                                                        
+                </tbody>                                                     
             </table>
-            
         </div>
     </div>

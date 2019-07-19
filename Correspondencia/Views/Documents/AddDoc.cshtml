@@ -13,7 +13,7 @@
             <h1 class="">Documento</h1>
         </div>
         <div class="card-body justify-content-around">
-            <form action="/Documents/AddDoc" method="post">
+            <form action="/Documents/AddDoc" method="post" enctype="multipart/form-data">
                 <div class="row ">
                     <div class="col-md-7 flex-column">
                         <p>No. Oficio</p>
@@ -21,7 +21,7 @@
                         <br />
                         <p>Documento</p>
                         <div class="custom-file">
-                            <input type="file" name="FILE" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                            <input type="file" name="files" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
                             <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
                         </div>
                         <br />
@@ -57,7 +57,7 @@
                     <div class="col-md-5 flex-column">
                         <p>Resumen</p>
                         <textarea class="form-control" name="RESUMEN" rows="15" cols="20"></textarea>
-                        <input class="btn btn-primary btn-block mt-3" type="submit" name="AddDoc" value="Save" />
+                        <input class="btn btn-primary btn-block mt-3" type="submit" value="Save" />
                     </div>
                 </div>
             </form>
