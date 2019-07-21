@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Correspondencia.DB;
 using Correspondencia.Models;
 using System.Data;
+using Correspondencia.Models.Documents;
 
 namespace Correspondencia.Controllers
 {
@@ -34,6 +35,12 @@ namespace Correspondencia.Controllers
             ViewBag.Documents = documents;
 
             return View();
+        }
+
+        [HttpPut]
+        public IActionResult Home(DocumentDetails details)
+        {
+            return RedirectToAction("Home", "Home");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
