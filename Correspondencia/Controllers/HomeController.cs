@@ -8,6 +8,7 @@ using Correspondencia.DB;
 using Correspondencia.Models;
 using System.Data;
 using Correspondencia.Models.Documents;
+using Microsoft.AspNetCore.Http;
 
 namespace Correspondencia.Controllers
 {
@@ -23,6 +24,7 @@ namespace Correspondencia.Controllers
             return View();
         }
 
+        [HttpGet]
         public IActionResult Home()
         {
 
@@ -37,8 +39,24 @@ namespace Correspondencia.Controllers
             return View();
         }
 
-        [HttpPut]
-        public IActionResult Home(DocumentDetails details)
+        [HttpGet]
+        public String Details(String id)
+        {
+            Correspondencia.DB.DB db = new Correspondencia.DB.DB();
+            List<DocumentDetails> details = new List<DocumentDetails>();
+
+            details = db.getDocDetails(id);
+
+            // Console.WriteLine("Hello World!");
+            String usuarioActal = Newtonsoft.Json.JsonConvert.SerializeObject(details).ToString();
+            //JavaScriptSerializer serializer = new JavaScriptSerializer();
+            // return serializer.Serialize(lista);
+            ViewBag.Details = details;
+            return usuarioActal;
+        }
+
+        [HttpPost]
+        public IActionResult Home(IFormCollection formCollection)
         {
             return RedirectToAction("Home", "Home");
         }

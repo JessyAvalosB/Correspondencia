@@ -7,6 +7,9 @@ namespace Correspondencia.Models
 {
     public class DocumentModel
     {
+        
+        public string ID_DOCUMENTO { get; set; }
+
         public string TURNADO { get; set; }
 
         public DateTime FECHA_CAPTURA { get; set; }

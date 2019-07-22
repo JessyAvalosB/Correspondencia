@@ -40,7 +40,7 @@ namespace Correspondencia.DB
 
                 while (dr.Read())
                 {
-                    documents.Add(DocumentConvertor(dr));
+                    documents.Add(DocumentConvertorHome(dr));
                 }
 
                 connection.Close();
@@ -48,11 +48,13 @@ namespace Correspondencia.DB
             
             return documents;
         }
-        public static DocumentModel DocumentConvertor(IDataReader reader)
+        public static DocumentModel DocumentConvertorHome(IDataReader reader)
         {
 
             DocumentModel documentModel = new DocumentModel();
-            
+
+            documentModel.ID_DOCUMENTO = Convert.ToString(reader["ID_DOCUMENTO"]);
+
             if (Convert.ToInt32(reader["TURNADO"]) == 0)
             {
                 documentModel.TURNADO = "No";
@@ -143,5 +145,60 @@ namespace Correspondencia.DB
                 }
                 connection.Close();
             }
+
+        public List<DocumentDetails> getDocDetails(string id)
+        {
+            int idDoc = Convert.ToInt32(id);
+            List<DocumentDetails> details = new List<DocumentDetails>();
+
+            using (connection)
+            {
+                connection.Open();
+
+                cmd = new SqlCommand("sp_SelectVistaDetallada", connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@ID_DOCUMENTO", idDoc);
+
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    details.Add(DocumentConvertorDetails(dr));
+                }
+
+                connection.Close();
+            }
+
+            return details;
+    }
+        public static DocumentDetails DocumentConvertorDetails(IDataReader reader)
+        {
+            DocumentDetails details = new DocumentDetails();
+
+            details.FOLIO = Convert.ToString(reader["FOLIO"]);
+            details.IMAGEN = Convert.ToString(reader["IMAGEN"]);
+            details.NOMBRE = Convert.ToString(reader["NOMBRE"]);
+            details.ORIGEN = Convert.ToString(reader["ORIGEN"]);
+            details.TELEFONO = Convert.ToString(reader["TELEFONO"]);
+            details.TIPO = Convert.ToString(reader["TIPO"]);
+            details.ID_DOCUMENTO = Convert.ToString(reader["ID_DOCUMENTO"]);
+            details.FECHA_CAPTURA = Convert.ToString(reader["FECHA_CAPTURA"]);
+            if (Convert.ToInt32(reader["ESTADO"]) == 0)
+            {
+                details.ESTADO = "No";
+            }
+            else
+            {
+                details.ESTADO = "Si";
+            }
+            details.CARGO = Convert.ToString(reader["CARGO"]);
+            details.COPIA_FISICA = Convert.ToString(reader["COPIA_FISICA"]);
+            details.CORREO = Convert.ToString(reader["CORREO"]);
+            details.DIRECCION = Convert.ToString(reader["DIRECCION"]);
+            details.RESPUESTA = Convert.ToString(reader["RESPUESTA"]);
+            details.RESUMEN = Convert.ToString(reader["RESUMEN"]);
+
+            return details;
         }
+    }
     }

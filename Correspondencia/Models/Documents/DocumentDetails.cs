@@ -21,6 +21,7 @@ namespace Correspondencia.Models.Documents
         public string ORIGEN { get; set; }
         public string TELEFONO { get; set; }
         public string COPIA_FISICA { get; set; }
-
+        public string RESUMEN { get; set; }
+        public string RESPUESTA { get; set; }
     }
 }

@@ -65,10 +65,9 @@ namespace Correspondencia.Controllers
             int turnado = 1;
             int estado = 0;
             int copia = 1;
-
+            string goodPath = Path.Combine("/", files.FileName);
             // full path to file in temp location
-            string path = Path.Combine(
-                       Directory.GetCurrentDirectory(), "wwwroot",
+            string path = Path.Combine("wwwroot/",
                        files.FileName);
 
             if (files.Length > 0)
@@ -86,7 +85,7 @@ namespace Correspondencia.Controllers
             addDoc.TURNADO = turnado;
             addDoc.ESTADO = estado;
             addDoc.RESUMEN = resumen;
-            addDoc.PDF = path;
+            addDoc.PDF = goodPath;
             addDoc.COPIA = copia;
 
             db.insertDocument(addDoc);
@@ -94,6 +93,6 @@ namespace Correspondencia.Controllers
             return RedirectToAction("Home", "Home");
         }
 
-       
+      
     }
 }
