@@ -3,11 +3,23 @@
 }
 
     <div class="d-flex flex-column align-items-center ">
+        <script src="~/js/login.js"></script>
+        <script src="~/js/jquery.redirect.js"></script>
+
+        <!-- <form action="/Documents/AddDoc" method="post">-->
+        <h1 class="align-content-center text-center"> Complejo Administrativo de Colima</h1>
+        <h2 class="align-content-center text-center"> Sistema de correspondencia</h2>
         <img src="~/img/iconfinder_user_male_172625.png" class="mb-4 mt-5 rounded-circle border border-dark" alt="User Image" />
-        <input id="Text1" class="mb-3" type="text" />
-        <input id="Password1" class="mb-3" type="password" />
-        <input id="Submit1" type="submit" class="btn btn-secondary" value="Iniciar sesión" />
-        
-       
+        <div class="form-label-group">
+            <input type="email" id="Text1" class="form-control" placeholder="No de Usuario" required="" autofocus="">
+            <label for="Text1">Email address</label>
+        </div>
+        <div class="form-label-group">
+            <input type="password" id="Password1" class="form-control" placeholder="Password" required="">
+            <label for="Password1">Password</label>
+        </div>
+        <input id="Submit1" type="submit" onclick="loginMetodo();" class="btn btn-secondary" value="Iniciar sesión" />
+
+        <!-- </form>-->
     </div>
 

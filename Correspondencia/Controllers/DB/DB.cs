@@ -192,7 +192,14 @@ namespace Correspondencia.DB
                 details.ESTADO = "Si";
             }
             details.CARGO = Convert.ToString(reader["CARGO"]);
-            details.COPIA_FISICA = Convert.ToString(reader["COPIA_FISICA"]);
+            if (Convert.ToInt32(reader["COPIA_FISICA"]) == 0)
+            {
+                details.COPIA_FISICA = "No";
+            }
+            else
+            {
+                details.COPIA_FISICA = "Si";
+            }
             details.CORREO = Convert.ToString(reader["CORREO"]);
             details.DIRECCION = Convert.ToString(reader["DIRECCION"]);
             details.RESPUESTA = Convert.ToString(reader["RESPUESTA"]);
@@ -200,5 +207,209 @@ namespace Correspondencia.DB
 
             return details;
         }
+
+        //Codigo hecho por otros
+
+        public List<DocUser> obtenerusuario(String usuario, String contraseña)
+        {
+            connection.Open();
+
+            cmd = new SqlCommand("sp_login", connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+            List<SqlParameter> parametros = new List<SqlParameter>();
+
+            cmd.Parameters.AddWithValue("@Usuario", usuario);
+            cmd.Parameters.AddWithValue("@Contraseña", contraseña);
+
+
+
+
+            //cmd.Parameters.Add(parametros.ToArray());
+
+            SqlDataReader dr = cmd.ExecuteReader();
+
+
+            DocUser usuarioAc = new DocUser();
+            List<DocUser> ArrayUsers = new List<DocUser>();
+            while (dr.Read())
+            {
+                usuarioAc.ID_USUARIO = Convert.ToInt32(dr["ID_USUARIO"]);
+                usuarioAc.ID_DIRECCION = Convert.ToInt32(dr["ID_DIRECCION"]);
+                usuarioAc.TIPO_USUARIO = Convert.ToInt32(dr["TIPO_USUARIO"]);
+                usuarioAc.NOMBRE = Convert.ToString(dr["NOMBRE"]);
+                usuarioAc.APELLIDO_PATERNO = Convert.ToString(dr["APELLIDO_PATERNO"]);
+                usuarioAc.APELLIDO_MATERNO = Convert.ToString(dr["APELLIDO_MATERNO"]);
+                usuarioAc.CORREO = Convert.ToString(dr["CORREO"]);
+                usuarioAc.TELEFONO = Convert.ToString(dr["TELEFONO"]);
+                ArrayUsers.Add(usuarioAc);
+            }
+
+            connection.Close();
+
+            return ArrayUsers;
+        }
+
+
+
+        public List<DocDependencia> getDependencias()
+        {
+            connection.Open();
+
+            cmd = new SqlCommand("sp_getDependenciaOrigen", connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+            List<SqlParameter> parametros = new List<SqlParameter>();
+
+
+
+
+
+
+            //cmd.Parameters.Add(parametros.ToArray());
+
+            SqlDataReader dr = cmd.ExecuteReader();
+            DocDependencia DependenciaAc;
+            List<DocDependencia> ArrayDependecias = new List<DocDependencia>();
+            while (dr.Read())
+            {
+                DependenciaAc = new DocDependencia();
+                DependenciaAc.ID_ORIGEN = Convert.ToInt32(dr["ID_ORIGEN"]);
+
+                DependenciaAc.NOMBRE = Convert.ToString(dr["NOMBRE"]);
+
+                ArrayDependecias.Add(DependenciaAc);
+            }
+
+            connection.Close();
+
+            return ArrayDependecias;
+        }
+
+
+
+        public void setFirmante(DocRemitentes Firmante)
+        {
+            connection.Open();
+
+            cmd = new SqlCommand("sp_InsertRemitentesOrigen", connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+            List<SqlParameter> parametros = new List<SqlParameter>();
+
+            cmd.Parameters.AddWithValue("@NOMBRE", Firmante.NOMBRE);
+            cmd.Parameters.AddWithValue("@APELLIDOP", Firmante.APELLIDO_PATERNO);
+            cmd.Parameters.AddWithValue("@APELLIDOM", Firmante.APELLIDO_MATERNO);
+            cmd.Parameters.AddWithValue("@CARGO", Firmante.CARGO);
+            cmd.Parameters.AddWithValue("@CORRE0", Firmante.CORREO);
+            cmd.Parameters.AddWithValue("@TELEFONO", Firmante.TELEFONO);
+            cmd.Parameters.AddWithValue("@NOMBREO", Firmante.NOMBREORIGEN);
+
+
+
+
+
+            //cmd.Parameters.Add(parametros.ToArray());
+
+            SqlDataReader dr = cmd.ExecuteReader();
+
+
+
+        }
+
+
+        public List<DocumentDetails> getDocumentoYear(String año, int tipo)
+        {
+
+            connection.Open();
+
+            cmd = new SqlCommand("sp_Busqueda", connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+            List<DocumentDetails> parametros = new List<DocumentDetails>();
+
+            cmd.Parameters.AddWithValue("@año", año);
+            cmd.Parameters.AddWithValue("@tipo", tipo);
+
+
+
+
+
+
+            return parametros;
+
+        }
+
+
+
+
+        public List<DocRemitentes> getEditarFirmantes()
+        {
+            connection.Open();
+
+            cmd = new SqlCommand("sp_getRemitentes", connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+            List<SqlParameter> parametros = new List<SqlParameter>();
+
+
+
+
+
+
+            //cmd.Parameters.Add(parametros.ToArray());
+
+            SqlDataReader dr = cmd.ExecuteReader();
+
+
+            DocRemitentes FirmanteAc;
+            List<DocRemitentes> ArrayFirmante = new List<DocRemitentes>();
+            while (dr.Read())
+            {
+                FirmanteAc = new DocRemitentes();
+
+                FirmanteAc.ID_REMITENTE = Convert.ToInt32(dr["ID_REMITENTE"]);
+
+                FirmanteAc.ID_ORIGEN = Convert.ToInt32(dr["ID_ORIGEN"]);
+                FirmanteAc.NOMBREORIGEN = Convert.ToString(dr["NOMBREORIGEN"]);
+                FirmanteAc.NOMBRE = Convert.ToString(dr["NOMBRE"]);
+                FirmanteAc.APELLIDO_PATERNO = Convert.ToString(dr["APELLIDO_PATERNO"]);
+                FirmanteAc.APELLIDO_MATERNO = Convert.ToString(dr["APELLIDO_MATERNO"]);
+                FirmanteAc.CARGO = Convert.ToString(dr["CARGO"]);
+                FirmanteAc.CORREO = Convert.ToString(dr["CORREO"]);
+                FirmanteAc.TELEFONO = Convert.ToString(dr["TELEFONO"]);
+                ArrayFirmante.Add(FirmanteAc);
+            }
+
+            connection.Close();
+
+            return ArrayFirmante;
+        }
+
+
+        public void setEditFirmante(DocRemitentes Firmante)
+        {
+            connection.Open();
+
+            cmd = new SqlCommand("sp_UdateRemitentesOrigen", connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+            List<SqlParameter> parametros = new List<SqlParameter>();
+
+            cmd.Parameters.AddWithValue("@NOMBRE", Firmante.NOMBRE);
+            cmd.Parameters.AddWithValue("@APELLIDOP", Firmante.APELLIDO_PATERNO);
+            cmd.Parameters.AddWithValue("@APELLIDOM", Firmante.APELLIDO_MATERNO);
+            cmd.Parameters.AddWithValue("@CARGO", Firmante.CARGO);
+            cmd.Parameters.AddWithValue("@CORRE0", Firmante.CORREO);
+            cmd.Parameters.AddWithValue("@TELEFONO", Firmante.TELEFONO);
+            cmd.Parameters.AddWithValue("@ID_REMITENTE", Firmante.ID_REMITENTE);
+            cmd.Parameters.AddWithValue("@ID_ORIGEN", Firmante.ID_ORIGEN);
+
+
+
+
+
+            //cmd.Parameters.Add(parametros.ToArray());
+
+            SqlDataReader dr = cmd.ExecuteReader();
+
+
+
+        }
+
     }
-    }
+}
